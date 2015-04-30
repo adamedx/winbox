@@ -23,7 +23,9 @@ if node[:platform] == "windows"
     download_directory = "#{Chef::Config[:file_cache_path]}/winbox/vscode".gsub(/\\/, '/')
     download_path = ::File.join(download_directory, 'vscodesetup.exe')
 
-    directory download_directory
+    directory download_directory do
+      recursive true
+    end
 
     remote_file download_path do
       source 'http://download.microsoft.com/download/0/D/5/0D57186C-834B-463A-AECB-BC55A8E466AE/VSCodeSetup.exe'
