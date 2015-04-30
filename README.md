@@ -1,6 +1,6 @@
 winbox Cookbook
 ===============
-The devbox cookbook configures Windows and Linux workstations for development. It configures the following features on a system:
+The *winbox* cookbook configures Windows and Linux workstations for development. It configures the following features on a system:
 
 * Git for source control
 * A text editor

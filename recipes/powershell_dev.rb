@@ -1,4 +1,4 @@
-# Cookbook Name:: devbox
+# Cookbook Name:: winbox
 # Recipe:: powershell_dev
 #
 # Copyright 2015, Adam Edwards

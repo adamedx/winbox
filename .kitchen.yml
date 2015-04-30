@@ -11,6 +11,6 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[devbox::default]
-      - recipe[devbox::desktop]
+      - recipe[winbox::default]
+      - recipe[winbox::desktop]
     attributes:

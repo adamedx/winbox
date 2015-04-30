@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'devbox::chocolatey_install'
+include_recipe 'winbox::chocolatey_install'
 
 if node[:platform] == "windows"
   case node['winbox']['editor']
