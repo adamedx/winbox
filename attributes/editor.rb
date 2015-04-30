@@ -1,0 +1,1 @@
+default['winbox']['editor'] = :vscode
