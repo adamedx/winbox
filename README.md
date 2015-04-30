@@ -49,11 +49,11 @@ The `editor` attribute determines the text editor to install via the
 its value explicitly since it has a default value, but it **must** be
 st to a valid value if its overridden:
 
-|Editor value | Description                                           |
-|-------------|-------------------------------------------------------|
-| `:vscode`   | **Default**. Sets the editor to *Visual Studio Code*. |
-| `:atom`     | Sets the editor to the Atom editor.                   |
-| `:emacs`    | Sets the editor to the Emacs.                         |
+| `editor` value | Description                                           |
+|----------------|-------------------------------------------------------|
+| `:vscode`      | **Default**. Sets the editor to *Visual Studio Code*. |
+| `:atom`        | Sets the editor to the Atom editor.                   |
+| `:emacs`       | Sets the editor to the Emacs.                         |
 
 License and Authors
 -------------------
