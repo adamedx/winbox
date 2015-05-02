@@ -29,7 +29,8 @@ git_exe_path ||= (`powershell -nologo -noninteractive -noprofile -command "(get-
 git_path_components = git_exe_path.chomp.gsub(/\\/,'/').split('/')
 git_exe_bin_path = nil
 if git_path_components && git_path_components.length > 4
-  git_exe_bin_path = git_path_components[0..git_path_components.length-3].join(File::ALT_SEPARATOR)
+  git_root_path = git_path_components[0..git_path_components.length-3].join(::File::ALT_SEPARATOR)
+  git_exe_bin_path = [git_root_path, 'bin'].join(::File::ALT_SEPARATOR)
 end
 
 ruby_block 'Add ssh path from git' do
