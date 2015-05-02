@@ -34,7 +34,7 @@ end
 
 ruby_block 'Add ssh path from git' do
   block do
-    ENV['PATH'] += ";#{get_exe_bin_path}"
+    ENV['PATH'] += ";#{git_exe_bin_path}"
   end
   action :nothing
 end
