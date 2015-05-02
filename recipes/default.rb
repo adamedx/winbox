@@ -23,3 +23,24 @@ if node[:platform] == "windows"
   include_recipe 'winbox::editor'
   include_recipe 'winbox::console'
 end
+
+# Enable SSH using the ssh distributed from git
+git_exe_path ||= (`powershell -nologo -noninteractive -noprofile -command "(get-command git | select-object -property path).path"`).chomp
+git_path_components = git_exe_path.chomp.gsub(/\\/,'/').split('/')
+git_exe_bin_path = nil
+if git_path_components && git_path_components.length > 4
+  git_exe_bin_path = git_path_components[0..git_path_components.length-3].join(File::ALT_SEPARATOR)
+end
+
+ruby_block 'Add ssh path from git' do
+  block do
+    ENV['PATH'] += ";#{get_exe_bin_path}"
+  end
+  action :nothing
+end
+
+windows_path git_exe_bin_path do
+  action :add
+  notifies :create, 'ruby_block[Add ssh path from git]', :immediately
+  only_if { ! git_exe_bin_path.nil? }
+end
