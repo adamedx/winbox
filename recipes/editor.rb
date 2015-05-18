@@ -29,8 +29,8 @@ if node[:platform] == "windows"
     remote_file download_path do
       source 'http://download.microsoft.com/download/0/D/5/0D57186C-834B-463A-AECB-BC55A8E466AE/VSCodeSetup.exe'
     end
-    execute 'install vscode' do
-      command download_path
+    powershell_script 'install vscode' do
+      code download_path
       not_if { ::File.exist?("#{ENV['HOME']}/AppData/Local/Code/update.exe") }
     end
   when :emacs
