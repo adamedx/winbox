@@ -33,15 +33,18 @@ if git_path_components && git_path_components.length > 4
   git_exe_bin_path = [git_root_path, 'bin'].join(::File::ALT_SEPARATOR)
 end
 
-ruby_block 'Add ssh path from git' do
-  block do
-    ENV['PATH'] += ";#{git_exe_bin_path}"
-  end
-  action :nothing
-end
 
-windows_path git_exe_bin_path do
-  action :add
-  notifies :create, 'ruby_block[Add ssh path from git]', :immediately
-  only_if { ! git_exe_bin_path.nil? }
+if git_exe_bin_path
+  ruby_block 'Add ssh path from git' do
+    block do
+      ENV['PATH'] += ";#{git_exe_bin_path}"
+    end
+    action :nothing
+  end
+
+  windows_path git_exe_bin_path do
+    action :add
+    notifies :create, 'ruby_block[Add ssh path from git]', :immediately
+    only_if { ! git_exe_bin_path.nil? }
+  end
 end
