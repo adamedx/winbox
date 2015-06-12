@@ -18,10 +18,10 @@
 powershell_script 'ExecutionPolicyUnrestricted' do
   architecture :x86_64
   code <<-EOH
-powershell -noprofile -executionpolicy bypass -command {set-executionpolicy unrestricted -force -scope localmachine}'
+powershell -noprofile -executionpolicy bypass -command {set-executionpolicy unrestricted -force -scope localmachine}
 exit 0
 EOH
-  only_if "(get-executionpolicy -scope localmachine) -eq 'restricted'"
+  only_if "(get-executionpolicy -scope localmachine) -ne 'unrestricted'"
 end
 
 powershell_script 'ExecutionPolicyUnrestrictedX86' do
@@ -30,5 +30,5 @@ powershell_script 'ExecutionPolicyUnrestrictedX86' do
 powershell -noprofile -executionpolicy bypass -command {set-executionpolicy unrestricted -force -scope localmachine}
 exit 0
 EOH
-  only_if "(get-executionpolicy -scope localmachine) -eq 'resticted'"
+  only_if "(get-executionpolicy -scope localmachine) -ne 'unresticted'"
 end
