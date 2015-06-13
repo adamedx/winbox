@@ -8,7 +8,6 @@
 			<value name="FontName2" type="string" data="Consolas"/>
 			<value name="KeyboardHooks" type="hex" data="01"/>
 			<value name="Update.ConfirmDownload" type="hex" data="01"/>
-			<value name="Update.UseBuilds" type="hex" data="02"/>
 			<value name="UseCurrentSizePos" type="hex" data="01"/>
 			<value name="WindowMode" type="dword" data="0000051f"/>
 			<value name="ConWnd Width" type="dword" data="00000050"/>

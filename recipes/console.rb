@@ -17,6 +17,19 @@
 
 include_recipe 'winbox::chocolatey_install'
 
+conemu_config_file = "#{ENV['ProgramW6432']}/conemu/conemu.xml"
+
+cookbook_file conemu_config_file do
+  action :nothing
+  source 'conemu.xml'
+end
+
+ruby_block 'check_conemu_config' do
+  block {}
+  not_if { ::File.exist? conemu_config_file }
+  notifies :create, "cookbook_file[#{conemu_config_file}]", :immediately
+end
+
 powershell_script 'conemu' do
   code <<-EOH
 chocolatey install conemu -y
@@ -27,10 +40,6 @@ if ($LASTEXITCODE -ne 0)
 }
 EOH
   only_if '(get-wmiobject Win32_MSIResource | Where-Object -Property value -like -Value conemu) -eq $null'
-end
-
-cookbook_file "#{ENV['ProgramW6432']}/conemu/conemu.xml" do
-  source 'conemu.xml'
 end
 
 # chocolatey 'psget'

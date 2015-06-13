@@ -50,14 +50,16 @@ function prompt
 {
     $lasterror = $?
     $lastexit = $lastexitcode
-    if ($lastexit -ne $null) { $lastexit = 0 }
+    if ($lastexit -eq $null) { $lastexit = 0 }
     $errorcolor = 'green'
     $exitcolor = 'green'
     if (! $lasterror) { $errorcolor = 'red' }
     if ($lastexit -ne 0) { $exitcolor = 'red' }
 
     write-host -nonewline -foregroundcolor $errorcolor "$env:computername "
-    write-host -nonewline -foregroundcolor $exitcolor "(0x$(($lastexit).ToString("X8"))) "
+    write-host -nonewline -foregroundcolor gray "("
+    write-host -nonewline -foregroundcolor $exitcolor "0x$(($lastexit).ToString("X8"))"
+    write-host -nonewline -foregroundcolor gray ") "
     write-host -foregroundcolor yellow "$($executionContext.SessionState.Path.CurrentLocation)"
     write-host -nonewline -foregroundcolor cyan "$env:username"
     "$('>' * ($nestedPromptLevel + 1)) "
