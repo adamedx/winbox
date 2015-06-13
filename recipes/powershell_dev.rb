@@ -30,5 +30,9 @@ powershell_script 'ExecutionPolicyUnrestrictedX86' do
 powershell -noprofile -executionpolicy bypass -command {set-executionpolicy unrestricted -force -scope localmachine}
 exit 0
 EOH
-  only_if "(get-executionpolicy -scope localmachine) -ne 'unresticted'"
+  only_if "(get-executionpolicy -scope localmachine) -ne 'unrestricted'"
+end
+
+cookbook_file "#{ENV['USERPROFILE']}/winbox-ps-profile.ps1" do
+  source 'winbox_ps_profile.ps1'
 end

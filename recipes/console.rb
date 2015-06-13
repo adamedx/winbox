@@ -26,8 +26,11 @@ if ($LASTEXITCODE -ne 0)
   chocolatey install conemu -y
 }
 EOH
-#  not_if 'get-command conemu64.exe'
   only_if '(get-wmiobject Win32_MSIResource | Where-Object -Property value -like -Value conemu) -eq $null'
+end
+
+cookbook_file "#{ENV['ProgramW6432']}/conemu/conemu.xml" do
+  source 'conemu.xml'
 end
 
 # chocolatey 'psget'
