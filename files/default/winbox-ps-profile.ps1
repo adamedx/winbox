@@ -14,12 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#
 # Enable readline support
+#
 import-module psreadline
 Set-PSReadlineOption -EditMode Emacs
 
 # Get the username and whether we're elevated for display
-# in the prompt and title
+# in the title and prompt
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [Security.Principal.WindowsPrincipal] $identity
 $titleprefix = ""
@@ -27,8 +29,23 @@ if (test-path variable:/PSDebugContext) { $titleprefix = 'Debug: ' }
 elseif($principal.IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
 { $titleprefix = "Administrator: " }
 
+#
+# The title will look like one of the following:
+#
+#   myusername@myhost
+#   Administrator: myusername@myhost
+#
 (get-host).ui.rawui.windowtitle = "$titleprefix$($env:username)@$($env:computername)"
 
+#
+# Set a useful two-line prompt that uses color for readability and status.
+# The format is 'host: lastexitcode: currentdirectory `newline `username >'.
+#
+# Here's example output:
+#
+#   myhost: 0x00000001: c:\dosbox\config.sys
+#   myuser >
+#
 function prompt
 {
     $lasterror = $?
@@ -43,13 +60,15 @@ function prompt
     write-host -nonewline -foregroundcolor $exitcolor "0x$(($lastexit).ToString("X8"))"
     write-host -nonewline -foregroundcolor gray ": "
     write-host -foregroundcolor yellow "$($executionContext.SessionState.Path.CurrentLocation)"
-    $currenttime=get-date
-    write-host -nonewline -foregroundcolor cyan "$(env:username)"
+    write-host -nonewline -foregroundcolor cyan "($env:username)"
     "$('>' * ($nestedPromptLevel + 1)) "
 }
 
-# . ~\myman.ps1
+# Make the man alias show full help by default
+. ~\get-help-full.ps1
+set-alias -option allscope man get-help-full
 
-# set-alias -option allscope man man-full
-
+# Useful shortcut to get to Documents folder
+. ~\set-location-docs.ps1
+new-alias docs set-location-docs
 

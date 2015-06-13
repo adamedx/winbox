@@ -36,3 +36,22 @@ end
 cookbook_file "#{ENV['USERPROFILE']}/winbox-ps-profile.ps1" do
   source 'winbox-ps-profile.ps1'
 end
+
+cookbook_file "#{ENV['USERPROFILE']}/man-full.ps1" do
+  source 'man-full.ps1'
+end
+
+cookbook_file "#{ENV['USERPROFILE']}/set-location-docs.ps1" do
+  source 'set-location-docs.ps1'
+end
+
+profile ||= Proc.new do
+  cmdlet = Chef::Util::Powershell::Cmdlet.new(node, '$PROFILE')
+  cmdlet.run.return_value.chomp
+end.call
+
+file profile do
+  content '. ~/winbox-ps-profile.ps1'
+  action :create_if_missing
+end
+
