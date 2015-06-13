@@ -37,8 +37,8 @@ cookbook_file "#{ENV['USERPROFILE']}/winbox-ps-profile.ps1" do
   source 'winbox-ps-profile.ps1'
 end
 
-cookbook_file "#{ENV['USERPROFILE']}/man-full.ps1" do
-  source 'man-full.ps1'
+cookbook_file "#{ENV['USERPROFILE']}/get-help-full.ps1" do
+  source 'get-help-full.ps1'
 end
 
 cookbook_file "#{ENV['USERPROFILE']}/set-location-docs.ps1" do
