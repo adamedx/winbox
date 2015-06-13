@@ -50,8 +50,15 @@ profile ||= Proc.new do
   cmdlet.run.return_value.chomp
 end.call
 
-file profile do
-  content '. ~/winbox-ps-profile.ps1'
-  action :create_if_missing
+directory ::File.split(profile.gsub(/\\/, '/'))[0] do
+  recursive true
+end
+
+# Use powershell_script instead of file to create this file
+# because the file resource can't handle remote profile
+# paths (i.e. UNC paths) as a destination
+powershell_script profile do
+  code "'. ~/winbox-ps-profile.ps1' > '#{profile}'"
+  not_if "test-path '#{profile}'"
 end
 
