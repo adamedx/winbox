@@ -34,5 +34,5 @@ EOH
 end
 
 cookbook_file "#{ENV['USERPROFILE']}/winbox-ps-profile.ps1" do
-  source 'winbox_ps_profile.ps1'
+  source 'winbox-ps-profile.ps1'
 end
