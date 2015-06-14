@@ -169,6 +169,11 @@ Installs the PSReadline module for Readline emulation with PowerShell.
 Installs a text editor -- the default is Visual Studio Code, which can
 be overridden via the `editor` attribute for this cookbook.
 
+### winbox::debugger
+Installs the Windows debuggers from the Windows SDK. The
+`debugger_install_path` attribute allows customization of the
+directory into which the debuggers are installed.
+
 ### Recipe customization
 
 The following attributes can be used to customize the cookbook's
@@ -187,6 +192,11 @@ st to a valid value if its overridden:
 | `:atom`        | Sets the editor to the Atom editor.                   |
 | `:emacs`       | Sets the editor to the Emacs.                         |
 | `:vim`         | Sets the editor to Vim                                |
+
+#### `debugger_install_path` attribute
+
+The `debugger_install_path` attribute is a file system path into which
+the debuggers should be installed.
 
 ## TODO
 
