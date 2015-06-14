@@ -43,7 +43,7 @@ elseif($principal.IsInRole([Security.Principal.WindowsBuiltInRole] "Administrato
 #
 # Here's example output:
 #
-#   myhost: 0x00000001: c:\dosbox\config.sys
+#   myhost (0x00000001) c:\windows\system32\drivers\etc
 #   myuser >
 #
 function prompt

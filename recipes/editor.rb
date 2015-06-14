@@ -43,6 +43,11 @@ if node[:platform] == "windows"
       code 'chocolatey install atom -y'
       not_if 'get-command atom'
     end
+  when :vim
+    powershell_script 'install_vim' do
+      code 'chocolatey install vim -y'
+      not_if 'get-command vim'
+    end
   else
     raise 'Invalid editor attribute was specified'
   end

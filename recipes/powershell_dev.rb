@@ -35,6 +35,7 @@ end
 
 cookbook_file "#{ENV['USERPROFILE']}/winbox-ps-profile.ps1" do
   source 'winbox-ps-profile.ps1'
+  action :create_if_missing
 end
 
 cookbook_file "#{ENV['USERPROFILE']}/get-help-full.ps1" do
