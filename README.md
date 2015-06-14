@@ -5,17 +5,17 @@ The *winbox* cookbook configures Windows workstations for development. It config
 * [Git](http://www.git-scm.com/) for source control
 * A text editor (configurable, [VSCode](https://code.visualstudio.com/) by default)
 * [ConEmu](https://conemu.github.io/) terminal replacement
-* [Chocolatey](https://chocolatey.org)
+* [Chocolatey](https://chocolatey.org) package manager
 * [PSGet](https://github.com/psget/psget) PowerShell module package manager
 * [PSReadline](https://github.com/lzybkr/PSReadLine) module for PowerShell
 * Other environmental settings optimized for development
 
 *Winbox* is for developers regardless of platform background:
 
-* Windows experts: you live and breathe Windows, maybe a lot of C#,
+* **Windows experts:** you live and breathe Windows, maybe a lot of C#,
   .NET, and PowerShell and even Win32 API. The tools in this cookbook
   are best of breed for that kind of work!
-* Unix users on Windows: you're primarily a Linux-focused developer
+* **Unix users on Windows:** you're primarily a Linux-focused developer
   who, for whatever reason, finds herself using Windows. This
   toolset makes sure you won't feel lost without standard-issue Linux
   capabilities such as a usable terminal, remote package manager, and
