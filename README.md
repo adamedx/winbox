@@ -10,12 +10,15 @@ The *Winbox* cookbook configures Windows workstations for development. It config
 * [PSReadline](https://github.com/lzybkr/PSReadLine) module for PowerShell
 * Other environmental settings optimized for development
 
-*Winbox* is for developers regardless of platform background:
+*Winbox* is for developers and operators regardless of platform background:
 
-* **Windows experts:** you live and breathe Windows, maybe a lot of C#,
-  .NET, and PowerShell and even Win32 API. The tools in this cookbook
-  are best of breed for that kind of work!
-* **Unix users on Windows:** you're primarily a Linux-focused developer
+* **Windows users:** You live and breathe Windows. If you're a
+  developer, that probably means maybe a lot of C#, .NET, and
+  PowerShell and even the Win32 API. The tools in this cookbook
+  are best of breed for that kind of work. If you're new to
+  development on Windows, this cookbook gives you the tools used by
+  the most experienced Windows developers.
+* **Unix users on Windows:** You're primarily a Linux-focused developer
   who, for whatever reason, finds herself using Windows. This
   toolset makes sure you won't feel lost without standard-issue Linux
   capabilities such as a usable terminal, remote package manager, and
@@ -93,9 +96,10 @@ few things to try:
   C#, Java, or PowerShell, any of the editors installed by this cookbook
   can perform syntax highlighting and in general offer the advanced
   editing capabilities required by developers. By default, the cookbook
-  will install [Visual Studio Code](https://code.visualstudio.com/); you
-  can override this default using the cookbook's `editor` attribute --
-  see subsequent sections for details on configuring other editors
+  will install [Visual Studio Code](https://code.visualstudio.com/)
+  which you can launch from PowerShell by executing the command
+  `code`. You can override this default using the cookbook's `editor` attribute.
+  See subsequent sections for details on configuring other editors
   such as Atom, Emacs, and Vim.
 * **Install software using Chocolatey.** The Chocolatey package
   manager is similar to those on Linux. Try it out -- usage is similar
@@ -108,6 +112,7 @@ few things to try:
   applications:
 
   `install-module pester`
+
 
 * **Get detailed command help** with *man*. PowerShell provides a
   default alias `man` for the `get-help` cmdlet which is similar to
@@ -125,7 +130,7 @@ few things to try:
   prompt changes color based the success or failure of the last
   PowerShell cmdlet that was executed.
 * **Run a PowerShell script!** This cookbook unlocks the
-  revolutionary power of using a scripting language to... run scripts.
+  revolutionary power of using a scripting language to... run scripts :smile:.
   It does this by doing something you've most likely already done on
   your workstation, but in case you haven't, or you're setting up a
   new workstation, it sets the PowerShell execution policy to
@@ -235,6 +240,56 @@ the debuggers should be installed.
 * Add unit tests
 * Integration tests
 * Change this cookbook to a resource-only cookbook
+* Expand motivation section with topics such as
+  * The sad state of the modern Windows developer
+  * A comparison with Linux: Windows and Windows + Winbox
+  * Prescriptive guidance -- how Windows users should use Windows with Winbox
+## Motivation for Winbox
+
+The *Winbox* cookbook delivers a Windows workstation user experience optimized
+for software developers:
+
+* It's a way of demonstrating to users of
+  both Windows and non-Windows platforms that there is indeed a presciptive
+  toolset for development on Windows.
+* It introduces users to the tools they need for a modern development
+  experience on the Windows platform.
+
+*Winbox* is necessary because the tools that are readily accessible to
+developers in a default installation of Windows are tedious and
+inefficient relics of Windows' single-tasking, non-networked, 16-bit heritage when
+Windows was primarily used by non-technical office workers and home
+users. During those early days of Windows prior to the move to the NT
+kernel, technical users like developers were to be found using
+various flavors of Unix, mainframe operating systems, and even Windows
+cousin OS/2.
+
+Windows has changed dramatically since those times, accelerating past
+its peers in several areas of operating system engineering. However,
+the tools used by developers around command-line and text interaction
+with the system, as well as package management and acquisition of open
+source software components have lagged significantly, in some cases
+staying frozen in time along with the pre-NT kernel.
+
+The PowerShell shell has been a notable exception to this stagnation,
+but even here the otherwise excellent PowerShell which in many ways
+surpasses peers like the well-regarded `bash` shell and its relatives
+has been shackled by the terminal application used by humans to access
+it. In the year 2015, this terminal is largely unchanged from the
+terminal released with the original version of 32-bit Windows, Windows
+NT 3.1 in *1992*.
+
+### Closing gaps
+
+The tools in *Winbox* fill in the omissions in Windows for developers,
+and allow Windows users to have the same workflow as those using, say,
+Linux, and thus to experience the gains in developers productivity associated
+with such non-Windows systems.
+
+Perhaps more importantly, *Winbox* can show Windows developers that
+they need to uplevel their workflow in order to stay relevant in a
+world that contains far more Linux and open-source-influenced tooling
+and assumptions than the late 20th and very early 21st centuries.
 
 License and Authors
 -------------------
