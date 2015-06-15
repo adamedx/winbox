@@ -1,6 +1,6 @@
-winbox Cookbook
+Winbox Cookbook
 ===============
-The *winbox* cookbook configures Windows workstations for development. It configures the following features on a system:
+The *Winbox* cookbook configures Windows workstations for development. It configures the following features on a system:
 
 * [Git](http://www.git-scm.com/) for source control
 * A text editor (configurable, [VSCode](https://code.visualstudio.com/) by default)
@@ -32,7 +32,8 @@ prerequisites installed:
 
 * `chef-client` and `berkshelf`: to install these, just install the
   [Chef-DK](https://downloads.chef.io/chef-dk), which includes them.
-* `git`: You can install `git` for Windows by visiting
+* `git` (recommended): The best way to obtain this cookbook is by
+  cloning it from its source on *Github*. You can install `git` for Windows by visiting
   [Github](http://msysgit.github.io/) in case you don't already have a
   package manager.
 
@@ -71,14 +72,14 @@ All right, you've installed everything, so what can you do? Here are a
 few things to try:
 
 * **Run ConEmu!** ConEmu should be available on your Start Menu /
-Screen, or by running ConEmu64.exe from within a command-line shell.
-ConEmu is a replacement for the limited terminal application used by
-default on Windows. The ConEmu terminal is much more like those on
-Linux desktop systems; the window is resizable, it supports ANSI color
-sequences, line-wrapped (instead of block) text selection, and many,
-many other advanced features. By default, ConEmu will run a PowerShell
-session in its terminal, though it can be configured to run a
-different shell.
+  Screen, or by running ConEmu64.exe from within a command-line shell.
+  ConEmu is a replacement for the limited terminal application used by
+  default on Windows. The ConEmu terminal is much more like those on
+  Linux desktop systems; the window is resizable, it supports ANSI color
+  sequences, line-wrapped (instead of block) text selection, and many,
+  many other advanced features. By default, ConEmu will run a PowerShell
+  session in its terminal, though it can be configured to run a
+  different shell.
 * **Use PSReadline with PowerShell!** You should already be using
   PowerShell as your command-line shell and primary method of
   interacting with Windows. If you're not familiar with
@@ -129,6 +130,10 @@ different shell.
   your workstation, but in case you haven't, or you're setting up a
   new workstation, it sets the PowerShell execution policy to
   `Unrestricted` so that you can run scripts without signing them.
+* **Use the ssh client.** Because the `git` client distribution
+  installed by this cookbook also contains an `ssh` client, you can
+  use it simply by executing the `ssh` command from PowerShell or
+  other shells on the system.
 * **Get to your Documents directory fast**. This cookbook defines an
   alias `docs` that will change your current directory to your
   *Documents* directory, even if it's configured to a network
@@ -169,7 +174,11 @@ default, you can list the desired subset of the recipes below in your
 run list when executing `chef-client`.
 
 ### winbox::chocolatey_install
-Install the Chocolatey package manager.
+Installs the Chocolatey package manager. This recipe is an alternative
+to the default recipe in the
+[Chocolatey cookbook](https://github.com/chocolatey/chocolatey-cookbook),
+which at the tim of this cookbook's authoring had a number of blocking
+issues that prevented it from installing Chocolatey reliably.
 
 ### winbox::console
 Installs ConEmu for Windows as an alternative to the built-in terminal (console) in Windows.
@@ -207,7 +216,7 @@ behavior:
 The `editor` attribute determines the text editor to install via the
 `editor` (and thus `default`) recipes. It's not mandatory to specify
 its value explicitly since it has a default value, but it **must** be
-st to a valid value if its overridden:
+set to a valid value if its overridden:
 
 | `editor` value | Description                                           |
 |----------------|-------------------------------------------------------|
@@ -223,6 +232,8 @@ the debuggers should be installed.
 
 ## TODO
 
+* Add unit tests
+* Integration tests
 * Change this cookbook to a resource-only cookbook
 
 License and Authors

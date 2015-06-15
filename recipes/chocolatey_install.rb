@@ -15,6 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This recipe works around defects in the chocolatey cookbook,
+# located at (https://github.com/chocolatey/chocolatey-cookbook).
+# If those bugs are addressed, the chocolatey cookbook can be used
+# intsead of this one to configure chocolatey on a system.
+
 chocolatey_path = "#{ENV['SYSTEMDRIVE']}\\ProgramData\\chocolatey\\bin"
 
 windows_path 'update_path_for_system' do
