@@ -80,30 +80,34 @@ many other advanced features. By default, ConEmu will run a PowerShell
 session in its terminal, though it can be configured to run a
 different shell.
 * **Use PSReadline with PowerShell!** You should already be using
-PowerShell as your command-line shell and primary method of
-interacting with Windows. If you're not familiar with
-[PSReadline](https://github.com/lzybkr/PSReadLine), it enhances any
-PowerShell, even those run in the default terminal application, so
-that Emacs-style line editing keyboard shortcuts including command
-history search are available when editing commands. This makes the
-experience of using PowerShell very similar to Unix shells like `bash`,
-which support this editing capability by default.
+  PowerShell as your command-line shell and primary method of
+  interacting with Windows. If you're not familiar with
+  [PSReadline](https://github.com/lzybkr/PSReadLine), it enhances any
+  PowerShell, even those run in the default terminal application, so
+  that Emacs-style line editing keyboard shortcuts including command
+  history search are available when editing commands. This makes the
+  experience of using PowerShell very similar to Unix shells like `bash`,
+  which support this editing capability by default.
 * **Use a real text editor** to edit... code! Whether it's Ruby, C++,
-C#, Java, or PowerShell, any of the editors installed by this cookbook
-can perform syntax highlighting and in general offer the advanced
-editing capabilities required by developers. By default, the cookbook
-will install [Visual Studio Code](https://code.visualstudio.com/); you
-can override this default using the cookbook's `editor` attribute --
-see subsequent sections for details on configuring other editors
-such as Atom, Emacs, and Vim.
+  C#, Java, or PowerShell, any of the editors installed by this cookbook
+  can perform syntax highlighting and in general offer the advanced
+  editing capabilities required by developers. By default, the cookbook
+  will install [Visual Studio Code](https://code.visualstudio.com/); you
+  can override this default using the cookbook's `editor` attribute --
+  see subsequent sections for details on configuring other editors
+  such as Atom, Emacs, and Vim.
 * **Install software using Chocolatey.** The Chocolatey package
   manager is similar to those on Linux. Try it out -- usage is similar
   to `apt-get` on Debian systems:
+
   `choco install sysinternals`
+
 * **Install PowerShell modules using PSGet.** [PSGet](https://github.com/psget/psget)
   is like Chocolatey, except it's focused on PowerShell modules rather than
   applications:
+
   `install-module pester`
+
 * **Get detailed command help** with *man*. PowerShell provides a
   default alias `man` for the `get-help` cmdlet which is similar to
   the Unix `man` command. Unfortunately, this useful alias defaults to
@@ -119,6 +123,12 @@ such as Atom, Emacs, and Vim.
   exit code of the last Windows process launched by the shell, and the
   prompt changes color based the success or failure of the last
   PowerShell cmdlet that was executed.
+* **Run a PowerShell script!** This cookbook unlocks the
+  revolutionary power of using a scripting language to... run scripts.
+  It does this by doing something you've most likely already done on
+  your workstation, but in case you haven't, or you're setting up a
+  new workstation, it sets the PowerShell execution policy to
+  `Unrestricted` so that you can run scripts without signing them.
 * **Get to your Documents directory fast**. This cookbook defines an
   alias `docs` that will change your current directory to your
   *Documents* directory, even if it's configured to a network
@@ -152,6 +162,12 @@ Here is additional behavior related to PowerShell profiles:
 In addition to the default recipe, additional recipes with more
 focused functionality may be used.
 
+### Standard recipes
+The following recipes are all included by the default recipe. However,
+if you need to use only a subset of the recipes included by the
+default, you can list the desired subset of the recipes below in your
+run list when executing `chef-client`.
+
 ### winbox::chocolatey_install
 Install the Chocolatey package manager.
 
@@ -169,7 +185,14 @@ Installs the PSReadline module for Readline emulation with PowerShell.
 Installs a text editor -- the default is Visual Studio Code, which can
 be overridden via the `editor` attribute for this cookbook.
 
-### winbox::debugger
+### Advanced recipes
+The following recipes are not included by the default recipe -- you'll
+need to explicitly add them to your run list to use them. They are not
+part of the default set because they are applicable for significantly
+less common use cases or they may have an unquantifiable impact to other
+applications or configuration of the system.
+
+#### winbox::debugger
 Installs the Windows debuggers from the Windows SDK. The
 `debugger_install_path` attribute allows customization of the
 directory into which the debuggers are installed.

@@ -25,26 +25,20 @@ if node[:platform] == "windows"
 end
 
 # Enable SSH using the ssh distributed from git
-git_exe_path ||= (`powershell -nologo -noninteractive -noprofile -command "(get-command git | select-object -property path).path"`).chomp
-git_path_components = git_exe_path.chomp.gsub(/\\/,'/').split('/')
-git_exe_bin_path = nil
-if git_path_components && git_path_components.length > 4
-  git_root_path = git_path_components[0..git_path_components.length-3].join(::File::ALT_SEPARATOR)
-  git_exe_bin_path = [git_root_path, 'bin'].join(::File::ALT_SEPARATOR)
+# if there is no ssh already available on the system
+ruby_block 'Add ssh to current shell path' do
+  action :nothing
+  block do
+    ENV['PATH'] += ";#{GitInformation.bin_directory.gsub(/\//, '\\')}"
+  end
+  only_if { ! ExecutableFinder.FindExecutableDirectory('ssh') }
 end
 
-
-if git_exe_bin_path
-  ruby_block 'Add ssh path from git' do
-    block do
-      ENV['PATH'] += ";#{git_exe_bin_path}"
-    end
-    action :nothing
-  end
-
-  windows_path git_exe_bin_path do
-    action :add
-    notifies :create, 'ruby_block[Add ssh path from git]', :immediately
-    only_if { ! git_exe_bin_path.nil? }
+windows_path 'Add ssh to system path' do
+  path lazy { GitInformation.bin_directory.gsub(/\//, '\\') }
+  action :add
+  notifies :run, 'ruby_block[Add ssh to current shell path]', :immediately
+  only_if do
+    ! ExecutableFinder.FindExecutableDirectory('ssh') && ExecutableFinder.FindExecutableDirectory('git')
   end
 end
