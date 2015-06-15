@@ -181,7 +181,7 @@ run list when executing `chef-client`.
 Installs the Chocolatey package manager. This recipe is an alternative
 to the default recipe in the
 [Chocolatey cookbook](https://github.com/chocolatey/chocolatey-cookbook),
-which at the tim of this cookbook's authoring had a number of blocking
+which at the time of this cookbook's authoring had a number of blocking
 issues that prevented it from installing Chocolatey reliably.
 
 ### winbox::console
