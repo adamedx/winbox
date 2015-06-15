@@ -113,7 +113,6 @@ few things to try:
 
   `install-module pester`
 
-
 * **Get detailed command help** with *man*. PowerShell provides a
   default alias `man` for the `get-help` cmdlet which is similar to
   the Unix `man` command. Unfortunately, this useful alias defaults to
