@@ -243,6 +243,7 @@ the debuggers should be installed.
   * The sad state of the modern Windows developer
   * A comparison with Linux: Windows and Windows + Winbox
   * Prescriptive guidance -- how Windows users should use Windows with Winbox
+
 ## Motivation for Winbox
 
 The *Winbox* cookbook delivers a Windows workstation user experience optimized
