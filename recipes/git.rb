@@ -1,5 +1,5 @@
 # Cookbook Name:: winbox
-# Recipe:: default
+# Recipe:: console
 #
 # Copyright 2015, Adam Edwards
 #
@@ -15,13 +15,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if node[:platform] == "windows"
-  include_recipe 'git'
-  include_recipe 'winbox::chocolatey_install'
-  include_recipe 'winbox::powershell_dev'
-  include_recipe 'winbox::readline'
-  include_recipe 'winbox::editor'
-  include_recipe 'winbox::console'
-  include_recipe 'winbox::git'
-  include_recipe 'winbox::chefdk_shortcut'
+include_recipe 'winbox::console'
+
+# Enable SSH using the ssh distributed from git
+windows_path "#{ENV['PROGRAMFILES']}\\Git\\Cmd" do
+  action :remove
+end
+
+windows_path "#{ENV['PROGRAMFILES']}\\Git\\bin" do
+  action :add  
+end
+
+powershell_script 'Install Posh-Git' do
+  code <<-EOH
+import-module "$env:programfiles/common files/modules/psget" -force
+psget\\install-module posh-git
+  EOH
+  only_if <<-EOH
+if ( $env:username -eq 'system' -or $env:username.endswith('$'))
+{
+  exit 1
+}
+
+(get-module -listavailable posh-git) -eq $null
+EOH
 end

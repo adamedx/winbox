@@ -33,33 +33,34 @@ EOH
   only_if "(get-executionpolicy -scope localmachine) -ne 'unrestricted'"
 end
 
-cookbook_file "#{ENV['USERPROFILE']}/winbox-ps-profile.ps1" do
-  source 'winbox-ps-profile.ps1'
-  action :create_if_missing
+if node['winbox']['create_profile']
+  cookbook_file "#{ENV['USERPROFILE']}/winbox-ps-profile.ps1" do
+    source 'winbox-ps-profile.ps1'
+    action :create_if_missing
+  end
+  
+  cookbook_file "#{ENV['USERPROFILE']}/get-help-full.ps1" do
+    source 'get-help-full.ps1'
+  end
+  
+  cookbook_file "#{ENV['USERPROFILE']}/set-location-docs.ps1" do
+    source 'set-location-docs.ps1'
+  end
+  
+  profile ||= Proc.new do
+    cmdlet = Chef::Util::Powershell::Cmdlet.new(node, '$PROFILE')
+    cmdlet.run.return_value.chomp
+  end.call
+  
+  directory ::File.split(profile.gsub(/\\/, '/'))[0] do
+    recursive true
+  end
+  
+  # Use powershell_script instead of file to create this file
+  # because the file resource can't handle remote profile
+  # paths (i.e. UNC paths) as a destination
+  powershell_script profile do
+    code "'. ~/winbox-ps-profile.ps1' > '#{profile}'"
+    not_if "test-path '#{profile}'"
+  end
 end
-
-cookbook_file "#{ENV['USERPROFILE']}/get-help-full.ps1" do
-  source 'get-help-full.ps1'
-end
-
-cookbook_file "#{ENV['USERPROFILE']}/set-location-docs.ps1" do
-  source 'set-location-docs.ps1'
-end
-
-profile ||= Proc.new do
-  cmdlet = Chef::Util::Powershell::Cmdlet.new(node, '$PROFILE')
-  cmdlet.run.return_value.chomp
-end.call
-
-directory ::File.split(profile.gsub(/\\/, '/'))[0] do
-  recursive true
-end
-
-# Use powershell_script instead of file to create this file
-# because the file resource can't handle remote profile
-# paths (i.e. UNC paths) as a destination
-powershell_script profile do
-  code "'. ~/winbox-ps-profile.ps1' > '#{profile}'"
-  not_if "test-path '#{profile}'"
-end
-

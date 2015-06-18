@@ -44,6 +44,7 @@ end
 
 
 # chocolatey 'psget'
+directory "#{ENV['USERPROFILE']}/Documents/WindowsPowerShell/Modules"
 
 powershell_script 'psget' do
   code 'chocolatey install psget -y'
@@ -56,4 +57,7 @@ if ( $env:username -eq 'system' -or $env:username.endswith('$'))
 (get-module -listavailable psget) -eq $null
 EOH
 end
+
+
+
 

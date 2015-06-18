@@ -189,7 +189,7 @@ Installs ConEmu for Windows as an alternative to the built-in terminal (console)
 
 ### winbox::powershell_dev
 Sets PowerShell execution policy for Windows so you can run PowerShell
-scripts
+scripts.  Creating a default profile can be disabled by setting the 'create_profile' attribute to false.
 
 ### winbox::readline
 Installs the PSReadline module for Readline emulation with PowerShell.
@@ -197,6 +197,9 @@ Installs the PSReadline module for Readline emulation with PowerShell.
 ### winbox::editor
 Installs a text editor -- the default is Visual Studio Code, which can
 be overridden via the `editor` attribute for this cookbook.
+
+### winbox::git
+Installs Posh-Git, a module to help make the git command line tool more PowerShell friendly.
 
 ### Advanced recipes
 The following recipes are not included by the default recipe -- you'll
