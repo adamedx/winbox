@@ -56,7 +56,8 @@ function prompt
     if (! $lasterror) { $errorcolor = 'red' }
     if ($lastexit -ne 0) { $exitcolor = 'red' }
 
-    write-host -nonewline -foregroundcolor $errorcolor "$env:computername "
+    write-host -nonewline -foregroundcolor $errorcolor '% '
+    write-host -nonewline -foregroundcolor green "$env:computername "
     write-host -nonewline -foregroundcolor gray "("
     write-host -nonewline -foregroundcolor $exitcolor "0x$(($lastexit).ToString("X8"))"
     write-host -nonewline -foregroundcolor gray ") "
