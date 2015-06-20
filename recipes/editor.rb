@@ -17,9 +17,12 @@
 
 include_recipe 'winbox::chocolatey_install'
 
+editor_executable = nil
+
 if node[:platform] == "windows"
   case node['winbox']['editor']
   when :vscode
+    editor_executable = 'powershell.exe -noprofile -command start-process code -wait -argumentlist @args'
     download_directory = "#{Chef::Config[:file_cache_path]}/winbox/vscode".gsub(/\\/, '/')
     download_path = ::File.join(download_directory, 'vscodesetup.exe')
 
@@ -34,16 +37,19 @@ if node[:platform] == "windows"
       not_if { ::File.exist?("#{ENV['HOME']}/AppData/Local/Code/update.exe") }
     end
   when :emacs
+    editor_executable = 'emacs.exe'
     powershell_script 'install_emacs_default' do
       code 'chocolatey install emacs -y'
       not_if 'get-command emacs'
     end
   when :atom
+    editor_executable = 'atom'
     powershell_script 'install_atom' do
       code 'chocolatey install atom -y'
       not_if 'get-command atom'
     end
   when :vim
+    editor_executable = 'vim'
     powershell_script 'install_vim' do
       code 'chocolatey install vim -y'
       not_if 'get-command vim'
@@ -51,4 +57,9 @@ if node[:platform] == "windows"
   else
     raise 'Invalid editor attribute was specified'
   end
+end
+
+env 'EDITOR' do
+  value editor_executable
+  not_if { ENV['EDITOR'] }
 end

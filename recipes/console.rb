@@ -21,7 +21,7 @@ conemu_config_file = "#{ENV['ProgramW6432']}/conemu/conemu.xml"
 
 cookbook_file conemu_config_file do
   action :nothing
-  source 'conemu.xml'
+  source 'ConEmu.xml'
 end
 
 powershell_script 'conemu' do
