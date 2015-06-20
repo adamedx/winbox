@@ -24,11 +24,11 @@
 			<value name="ColorTable07" type="dword" data="00c0c0c0"/>
 			<value name="ColorTable08" type="dword" data="00808080"/>
 			<value name="ColorTable09" type="dword" data="00ff0000"/>
-			<value name="ColorTable10" type="dword" data="0000ff00"/>
+			<value name="ColorTable10" type="dword" data="0000d800"/>
 			<value name="ColorTable11" type="dword" data="00ffff00"/>
-			<value name="ColorTable12" type="dword" data="000000ff"/>
+			<value name="ColorTable12" type="dword" data="000000d8"/>
 			<value name="ColorTable13" type="dword" data="00ff00ff"/>
-			<value name="ColorTable14" type="dword" data="0000ffff"/>
+			<value name="ColorTable14" type="dword" data="0000d8d8"/>
 			<value name="ColorTable15" type="dword" data="00ffffff"/>
 			<value name="ColorTable16" type="dword" data="00000000"/>
 			<value name="ColorTable17" type="dword" data="00800000"/>
@@ -55,22 +55,22 @@
 			<key name="Colors" modified="2015-06-18 06:00:16" build="150610">
 				<value name="Count" type="dword" data="00000001"/>
 				<key name="Palette1" modified="2015-06-18 06:00:16" build="150610">
-					<value name="Name" type="string" data="&lt;Solar Winbox&gt;"/>
+					<value name="Name" type="string" data="&lt;Polarized Winbox&gt;"/>
 					<value name="ColorTable00" type="dword" data="00000000"/>
 					<value name="ColorTable01" type="dword" data="00423607"/>
 					<value name="ColorTable02" type="dword" data="00008000"/>
-					<value name="ColorTable03" type="dword" data="00808000"/>
-					<value name="ColorTable04" type="dword" data="00000080"/>
+					<value name="ColorTable03" type="dword" data="00a0a000"/>
+					<value name="ColorTable04" type="dword" data="000000a0"/>
 					<value name="ColorTable05" type="dword" data="00562401"/>
 					<value name="ColorTable06" type="dword" data="00f0edee"/>
 					<value name="ColorTable07" type="dword" data="00c0c0c0"/>
 					<value name="ColorTable08" type="dword" data="00808080"/>
 					<value name="ColorTable09" type="dword" data="00ff0000"/>
-					<value name="ColorTable10" type="dword" data="0000ff00"/>
+					<value name="ColorTable10" type="dword" data="0000d800"/>
 					<value name="ColorTable11" type="dword" data="00ffff00"/>
-					<value name="ColorTable12" type="dword" data="000000ff"/>
+					<value name="ColorTable12" type="dword" data="000000d8"/>
 					<value name="ColorTable13" type="dword" data="00ff00ff"/>
-					<value name="ColorTable14" type="dword" data="0000ffff"/>
+					<value name="ColorTable14" type="dword" data="0000d8d8"/>
 					<value name="ColorTable15" type="dword" data="00ffffff"/>
 					<value name="ColorTable16" type="dword" data="00000000"/>
 					<value name="ColorTable17" type="dword" data="00800000"/>
