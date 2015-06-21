@@ -25,6 +25,13 @@ if node[:platform] == "windows"
   include_recipe 'winbox::chefdk_shortcut'
 end
 
+# Fix terminal variable to avoid warnings
+# when running certain git commands
+env 'TERM' do
+  value 'msys'
+  not_if { ENV['TERM'] }
+end
+
 # Enable SSH using the ssh distributed from git
 # if there is no ssh already available on the system
 ruby_block 'Add ssh to current shell path' do
