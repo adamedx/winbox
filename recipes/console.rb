@@ -17,7 +17,7 @@
 
 include_recipe 'winbox::chocolatey_install'
 
-conemu_config_file = "#{ENV['ProgramW6432']}/conemu/conemu.xml"
+conemu_config_file = "#{ENV['ProgramW6432']}/conemu/ConEmu.xml"
 
 cookbook_file conemu_config_file do
   action :nothing

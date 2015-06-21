@@ -57,12 +57,12 @@ function prompt
     if ($lastexit -ne 0) { $exitcolor = 'red' }
 
     write-host -nonewline -foregroundcolor $errorcolor '% '
-    write-host -nonewline -foregroundcolor green "$env:computername "
+    write-host -nonewline -foregroundcolor darkyellow "$env:computername "
     write-host -nonewline -foregroundcolor gray "("
     write-host -nonewline -foregroundcolor $exitcolor "0x$(($lastexit).ToString("X8"))"
     write-host -nonewline -foregroundcolor gray ") "
     write-host -foregroundcolor cyan "$($executionContext.SessionState.Path.CurrentLocation)"
-    write-host -nonewline -foregroundcolor yellow "$env:username"
+    write-host -nonewline -foregroundcolor darkyellow "$env:username"
     "$('>' * ($nestedPromptLevel + 1)) "
 }
 

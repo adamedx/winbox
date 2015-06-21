@@ -33,7 +33,7 @@ if node[:platform] == "windows"
       source 'http://download.microsoft.com/download/0/D/5/0D57186C-834B-463A-AECB-BC55A8E466AE/VSCodeSetup.exe'
     end
     powershell_script 'install vscode' do
-      code download_path
+      code "#{download_path} --silent"
       not_if { ::File.exist?("#{ENV['HOME']}/AppData/Local/Code/update.exe") }
     end
   when :emacs

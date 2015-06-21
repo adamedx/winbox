@@ -14,14 +14,13 @@
 			<value name="Update.CheckHourly" type="hex" data="00"/>
 			<value name="Update.UseBuilds" type="hex" data="01"/>
 			<value name="Update.ConfirmDownload" type="hex" data="01"/>
-
 			<value name="ColorTable00" type="dword" data="00362b00"/>
 			<value name="ColorTable01" type="dword" data="00423607"/>
 			<value name="ColorTable02" type="dword" data="00308830"/>
 			<value name="ColorTable03" type="dword" data="00837b65"/>
 			<value name="ColorTable04" type="dword" data="00164bcb"/>
 			<value name="ColorTable05" type="dword" data="00c4716c"/>
-			<value name="ColorTable06" type="dword" data="00609483"/>
+			<value name="ColorTable06" type="dword" data="006094cb"/>
 			<value name="ColorTable07" type="dword" data="00d5e8ee"/>
 			<value name="ColorTable08" type="dword" data="00a1a193"/>
 			<value name="ColorTable09" type="dword" data="00d28b26"/>
@@ -63,7 +62,7 @@
 					<value name="ColorTable03" type="dword" data="00837b65"/>
 					<value name="ColorTable04" type="dword" data="00164bcb"/>
 					<value name="ColorTable05" type="dword" data="00c4716c"/>
-					<value name="ColorTable06" type="dword" data="00609483"/>
+					<value name="ColorTable06" type="dword" data="006094cb"/>
 					<value name="ColorTable07" type="dword" data="00d5e8ee"/>
 					<value name="ColorTable08" type="dword" data="00a1a193"/>
 					<value name="ColorTable09" type="dword" data="00d28b26"/>

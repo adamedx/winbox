@@ -1,5 +1,7 @@
 $conemulocation = "$env:programfiles\ConEmu\Conemu64.exe"
-$chefdkcommand = 'chef shell-init powershell | iex'
+$chefdkinit = 'chef shell-init powershell | iex'
+$chefdkgreeting = "echo '$([System.Environment]::OSVersion.VersionString) PowerShell $($PSVersionTable.psversion.tostring())';write-host -foregroundcolor darkyellow 'Ohai, welcome to Chef-DK!`n'"
+$chefdkcommand = "$chefdkinit;$chefdkgreeting"
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [Security.Principal.WindowsPrincipal] $identity
 $titleprefix = ""
@@ -12,8 +14,6 @@ $chefdktitle = "$($titleprefix)Chef-DK ($env:username)"
 
 if ( test-path $conemulocation )
 {
-#    $conemucommand = $conemulocation + "
-#    & $conemulocation "/cmd `"powershell.exe -command $chefdkcommand'`""
     start-process $conemulocation -argumentlist '/title',"`"$chefdktitle`"",'/cmd','powershell.exe','-noexit','-command',$chefdkcommand
 }
 else
