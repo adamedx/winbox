@@ -24,6 +24,7 @@ remote_file chefdk_setup_file do
 end
 
 package chefdk_setup_file do
+  timeout 1200
   not_if 'get-command chef *>&1 | out-null'
 end
 
