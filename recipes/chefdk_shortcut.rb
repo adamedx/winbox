@@ -16,7 +16,7 @@
 # limitations under the License.
 
 chefdk_exists = 'get-command chef *>&1 | out-null; $?'
-chefdk_shortcut_directory = ::File.join(ENV['LOCALAPPDATA'], 'Chef-DK')
+chefdk_shortcut_directory = ::File.join(ENV['LOCALAPPDATA'], 'ChefDK')
 
 directory chefdk_shortcut_directory do
   guard_interpreter :powershell_script
@@ -35,18 +35,25 @@ cookbook_file ::File.join(ENV['USERPROFILE'], 'start-chefdk.ps1') do
   only_if chefdk_exists
 end
 
-powershell_script 'Create Chef-DK Start Menu Shortcut' do
+powershell_script 'Create ChefDK Start Menu Shortcut' do
   code <<-EOH
 $shell = New-Object -ComObject WScript.Shell
 $startmenu = [System.Environment]::GetFolderPath('StartMenu')
-$chefdkdir = "#{ENV['LOCALAPPDATA']}\\Chef-DK"
+$chefdkdir = "#{ENV['LOCALAPPDATA']}\\ChefDK"
 
-$shortcut = $shell.CreateShortcut("$startmenu\\chefdk.lnk")
+$shortcut = $shell.CreateShortcut("$startmenu\\ChefDK.lnk")
+$shortcut.Description = 'Chef Development Kit'
 $shortcut.TargetPath = 'powershell.exe'
 $shortcut.Arguments = '-file "%userprofile%\\start-chefdk.ps1"'
 $shortcut.WorkingDirectory = '%userprofile%'
 $shortcut.IconLocation = "$chefdkdir\\chef-dk.ico"
 $shortcut.Save()
 EOH
-  only_if chefdk_exists
+  only_if <<-EOH
+if ((test-path "$startmenu\\ChefDK.lnk") -eq $true)
+{
+    exit 1
+}
+#{chefdk_exists}
+EOH
 end
