@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-chefdk_exists = 'get-command chef *>&1 | out-null'
+chefdk_exists = 'get-command chef *>&1 | out-null; $?'
 chefdk_shortcut_directory = ::File.join(ENV['LOCALAPPDATA'], 'Chef-DK')
 
 directory chefdk_shortcut_directory do

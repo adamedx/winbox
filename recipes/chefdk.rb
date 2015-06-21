@@ -20,12 +20,12 @@ chefdk_setup_file = ::File.join(Chef::Config[:file_cache_path], 'chefdk.msi')
 remote_file chefdk_setup_file do
   guard_interpreter :powershell_script
   source 'https://www.chef.io/chef/download-chefdk?p=windows&pv=2008r2&m=x86_64&v=latest'
-  not_if 'get-command chef *>&1 | out-null'
+  not_if 'get-command chef *>&1 | out-null; $?'
 end
 
 package chefdk_setup_file do
   timeout 1200
-  not_if 'get-command chef *>&1 | out-null'
+  not_if 'get-command chef *>&1 | out-null; $?'
 end
 
 include_recipe 'winbox::chefdk_shortcut'

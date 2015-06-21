@@ -1,6 +1,6 @@
 $conemulocation = "$env:programfiles\ConEmu\Conemu64.exe"
 $chefdkinit = 'chef shell-init powershell | iex'
-$chefdkgreeting = "echo '$([System.Environment]::OSVersion.VersionString) PowerShell $($PSVersionTable.psversion.tostring())';write-host -foregroundcolor darkyellow 'Ohai, welcome to Chef-DK!`n'"
+$chefdkgreeting = "echo 'PowerShell $($PSVersionTable.psversion.tostring()) ($([System.Environment]::OSVersion.VersionString))';write-host -foregroundcolor darkyellow 'Ohai, welcome to Chef-DK!`n'"
 $chefdkcommand = "$chefdkinit;$chefdkgreeting"
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [Security.Principal.WindowsPrincipal] $identity
