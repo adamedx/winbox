@@ -53,19 +53,19 @@ EOH
     editor_executable = 'emacs.exe'
     powershell_script 'install_emacs_default' do
       code 'chocolatey install emacs -y'
-      not_if 'get-command emacs'
+      not_if 'get-command emacs *>&1 | out-null ; $?'
     end
   when :atom
     editor_executable = 'atom'
     powershell_script 'install_atom' do
       code 'chocolatey install atom -y'
-      not_if 'get-command atom'
+      not_if 'get-command atom *>&1 | out-null ; $?'
     end
   when :vim
     editor_executable = 'vim'
     powershell_script 'install_vim' do
       code 'chocolatey install vim -y'
-      not_if 'get-command vim'
+      not_if 'get-command vim *>&1 | out-null ; $?'
     end
   else
     raise 'Invalid editor attribute was specified'

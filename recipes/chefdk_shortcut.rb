@@ -50,6 +50,7 @@ $shortcut.IconLocation = "$chefdkdir\\chef-dk.ico"
 $shortcut.Save()
 EOH
   only_if <<-EOH
+$startmenu = [System.Environment]::GetFolderPath('StartMenu')
 if ((test-path "$startmenu\\ChefDK.lnk") -eq $true)
 {
     exit 1
