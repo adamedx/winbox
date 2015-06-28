@@ -1,0 +1,7 @@
+// Place your settings in this file to overwrite the default settings
+{
+		// Controls if the editor will insert spaces for tabs. If set to auto, the value will be guessed based on the opened file.	
+		"editor.insertSpaces": true,
+		// Controls whether the editor should render whitespace characters
+		"editor.renderWhitespace": false
+}

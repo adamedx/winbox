@@ -1,0 +1,91 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    { "key": "ctrl+n",                  "command": "cursorDown"},
+    { "key": "ctrl+shift+n",          "command": "cursorDownSelect",
+                                         "when": "editorTextFocus" },
+    { "key": "ctrl+e",                   "command": "cursorEnd"},
+    { "key": "shift+ctrl+e",             "command": "cursorEndSelect"},
+    { "key": "ctrl+a",                  "command": "cursorHome" },
+    { "key": "shift+ctrl+a",            "command": "cursorHomeSelect"},
+    { "key": "ctrl+b",                  "command": "cursorLeft"},
+    { "key": "shift+ctrl+b",            "command": "cursorLeftSelect"},
+    { "key": "ctrl+v",              "command": "cursorPageDown"},
+    { "key": "shift+ctrl+v",        "command": "cursorPageDownSelect"},
+    { "key": "alt+v",                "command": "cursorPageUp"},
+    { "key": "alt+shift v",          "command": "cursorPageUpSelect"},
+    { "key": "ctrl+f",                 "command": "cursorRight"},
+    { "key": "shift+ctrl+f",           "command": "cursorRightSelect"},
+    { "key": "alt <",             "command": "cursorTop"},
+    { "key": "alt+shift <",       "command": "cursorTopSelect"},
+    { "key": "ctrl+p",                    "command": "cursorUp"},
+    { "key": "ctrl+shift+p",         "command": "cursorUpSelect"},
+    { "key": "ctrl+d",                "command": "deleteRight"},
+    { "key": "alt+w",           "command": "editor.action.clipboardCopyAction" },
+    { "key": "ctrl+c",                "command": "editor.action.clipboardCopyAction" },
+    { "key": "ctrl+x",                "command": "editor.action.clipboardCutAction" },
+    { "key": "ctrl+y",                "command": "editor.action.clipboardPasteAction" },
+    { "key": "ctrl+k",          "command": "editor.action.deleteLines"}
+    { "key": "ctrl+s",               "command": "actions.find" },
+    { "key": "ctrl+alt+n",                "command": "workbench.action.files.newUntitledFile" },
+    { "key": "ctrl+x ctrl+f",         "command": "workbench.action.files.openFile" },
+    { "key": "ctrl+x ctrl+s",                "command": "workbench.action.files.save" },
+    { "key": "ctrl+shift+s",                "command": "workbench.action.files.saveall" },                
+    { "key": "ctrl+shift+r",          "command": "workbench.action.reloadWindow" },
+    { "key": "ctrl+x k",          "command": "workbench.action.closeActiveEditor" },
+    { "key": "ctrl+x 3",               "command": "workbench.action.splitEditor" },
+    { "key": "ctrl+shift+o",               "command": "workbench.action.cycleEditor" },
+    { "key": "ctrl+s",                    "command": "editor.action.nextMatchFindAction",
+                                      "when": "editorFocus" },
+    { "key": "ctrl+shift+m",          "command": "workbench.action.markdown.togglePreview" },
+    { "key": "ctrl+alt+p",                "command": "workbench.action.focusSideBar" },
+    { "key": "ctrl+alt+e",          "command": "workbench.action.toggleSidebarVisibility" },      
+    { "key": "alt+x",          "command": "workbench.action.showCommands" },
+    { "key": "ctrl+x p",          "command": "workbench.action.cycleEditor" },    
+    { "key": "ctrl+x o",          "command": "workbench.action.cycleEditor" },
+    { "key": "ctrl+x b",                "command": "workbench.action.quickOpen" },
+    { "key": "ctrl+p",        "command": "workbench.action.quickOpenNavigatePrevious",
+                                     "when": "inQuickOpen" },
+    { "key": "ctrl+n",        "command": "workbench.action.quickOpenNavigateNext",
+                                     "when": "inQuickOpen" }
+        
+]
+
+
+
+ // Here are other available commands: 
+// - deleteAllRight
+// - lineBreakInsert
+// - editor.action.goToTypeDeclaration
+// - editor.action.triggerParameterHints
+// - editor.action.openLink
+// - workbench.action.toggleSidebarPosition
+// - workbench.action.quickops.saveAll
+// - workbench.action.files.saveFiles
+// - workbench.action.files.revert
+// - workbench.action.files.newFolder
+// - worktogglebench.files.action.compareFileWith
+// - workbench.view.git
+// - workbench.action.git.executeGitCommands
+// - editor.action.clearoutput
+// - workbench.action.markdown.showWelcome
+// - workbench.action.editor.changeLanguageMode
+// - workbench.action.editor.changeEOL
+// - workbench.action.editor.changeEncoding
+// - languages.action.omnisharp.restart
+// - workbench.action.changeToLightTheme
+// - workbench.action.changeToDarkTheme
+// - workbench.action.changeToHighContrastTheme
+// - workbench.action.openGlobalSettings
+// - workbench.action.openGlobalKeybindings
+// - workbench.action.openWorkspaceSettings
+// - workbench.action.files.copyPathOfActiveFile
+// - workbench.action.files.revealActiveFileInWindows
+// - workbench.action.files.openFolder
+// - workbench.action.debug.configure
+// - workbench.action.closeFolder
+// - workbench.action.toggleDevTools
+// - workbench.action.zoomReset
+// - workbench.action.openWorkerDevTools
+// - workbench.action.closeWorkerDevTools
+// - workbench.action.reloadWindow
+// - workbench.action.files.toggleAutoSave
