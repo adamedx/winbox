@@ -25,7 +25,7 @@ function get-shell
     $shell
 }
 
-function install-gitrepo($repo, $parent = $null)
+function install-gitrepo($repo, $parent, $version = 'master')
 {
     if ($parent -eq $null)
     {
@@ -41,25 +41,26 @@ function install-gitrepo($repo, $parent = $null)
 
     ($zip,$dest) | rm -erroraction ignore -r -force
 
-    iwr $repo -outfile $zip;
+    iwr "$repo/archive/$version.zip" -outfile $zip;
 
     $shell = get-shell
 
     $files = $shell.NameSpace($zip).Items()
-    $shell.NameSpace($dest).CopyHere($files, 20)
-    mv "$($dest)-master" $dest
+    $shell.NameSpace($parent).CopyHere($files, 20)
+    mv "$($dest)-$version" $dest
+
     $dest
 }
 
-function install-chefdk
+function install-chefdk($destination, $version)
 {
-    $dest = install-gitrepo https://github.com/chef/pantry-chef-repo/archive/master.zip @args
+    $dest = install-gitrepo https://github.com/chef/pantry-chef-repo $version $destination
     iex "$dest\bin\pantry.ps1 -runchef"
 }
 
-function install-devtools
+function install-devtools($destination, $version)
 {
-    $winbox = install-gitrepo https://github.com/adamedx/winbox/archive/master.zip @args
+    $winbox = install-gitrepo https://github.com/adamedx/winbox $version $destination
 
     cd $winbox
     rm .\berksfile.lock -erroraction ignore
@@ -68,11 +69,11 @@ function install-devtools
     popd
 }
 
-function install-workstation
+function install-workstation($destination = $null, $winboxversion = 'master')
 {
     $erroractionpreference = 'stop'
 
-    install-chefdk
-    install-devtools
+    install-chefdk $destination
+    install-devtools $destination, $winboxversion
 }
 
