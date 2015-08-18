@@ -53,13 +53,13 @@ function install-gitrepo($repo, $parent = $null)
 
 function install-chefdk
 {
-    $dest = install-chefdk https://github.com/chef/pantry-chef-repo/archive/master.zip @args
+    $dest = install-gitrepo https://github.com/chef/pantry-chef-repo/archive/master.zip @args
     iex "$dest\bin\pantry.ps1 -runchef"
 }
 
 function install-devtools
 {
-    $winbox = install-chefdk https://github.com/adamedx/winbox/archive/master.zip @args
+    $winbox = install-gitrepo https://github.com/adamedx/winbox/archive/master.zip @args
 
     cd $winbox
     rm .\berksfile.lock -erroraction ignore
