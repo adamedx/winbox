@@ -32,7 +32,7 @@ function install-gitrepo($repo, $parent = $null)
         $parent = [environment]::GetFolderPath("MyDocuments")
     }
 
-    $project = $repo -split | select-object -last 1
+    $project = $repo -split '/' | select-object -last 1
     $dest = $parent, $project -join '\'
 
     echo "Installing $repo to $dest"
