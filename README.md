@@ -1,6 +1,20 @@
 Winbox Cookbook
 ===============
-The *Winbox* cookbook configures Windows workstations for development. It configures the following features on a system:
+The *Winbox* cookbook configures Windows workstations for developers. It configures Git, Chef-DK, a text editor, and other tools so you can start using it for Chef, Ruby, and other development tasks.
+
+## Installation
+
+Copy the following command and paste it into PowerShell session and run it to install *Winbox* and all its prerequisites:
+
+```powershell
+. { iwr https://raw.githubusercontent.com/adamedx/winbox/0.1.76.current.0/files/default/install.ps1 } | iex;install-workstation
+```
+
+See additonal instructions for customization and advanced usage and non-default features.
+
+## Features and usage
+
+The *Winbox* cookbook configures the following features on a system:
 
 * [Git](http://www.git-scm.com/) for source control
 * A text editor (configurable, [VSCode](https://code.visualstudio.com/) by default)
@@ -10,7 +24,9 @@ The *Winbox* cookbook configures Windows workstations for development. It config
 * [PSReadline](https://github.com/lzybkr/PSReadLine) module for PowerShell
 * Other environmental settings optimized for development
 
-*Winbox* is for developers and operators regardless of platform background:
+### Who should use this cookbook?
+
+Everyone should using Windows should use *Winbox*! It's for developers and operators regardless of platform background:
 
 * **Windows users:** You live and breathe Windows. If you're a
   developer, that means a lot of C# / .NET, some C,
@@ -40,7 +56,7 @@ prerequisites installed:
   [Github](http://msysgit.github.io/) in case you don't already have a
   package manager.
 
-## Installation -- your workstation
+## Detailed installation -- your workstation
 If your goal is to configure a local workstation (possibly the one
 you're using to read this) without using a Chef Server, simply do the
 following from a PowerShell session:
@@ -170,7 +186,7 @@ Here is additional behavior related to PowerShell profiles:
 
 Efficient, sophisticated users of Windows follow these rules:
 
-* **Always use PowerShell.** Never use `cmd.exe`, no *cygwin* except for fun.
+* **Always use PowerShell.** Never use `cmd.exe`, and no *cygwin* except for fun.
 * **Use PowerShell cmdlets for everything** instead of GUI tools (e.g. `get-eventlog` instead of *EventViewer*)
 * **Use `ConEmu` as your PowerShell terminal.**
 * **Use `psreadline`**
@@ -317,7 +333,7 @@ Fortunately, modern versions of Windows along with the features installed by thi
 * **Use chocolatey and psget to obtain software**. No system comes with the absolute perfect set of installed software components for each individual. While Windows has a wide range of software available, getting it usually involves an Internet search followed by navigation of a download process, and finally a manually launched installation process that may or may not require answering some questions. Contrast this to package managers like `apt` and `yum` on Linux, where software can be installed with a single command. In this usage, packages have unique but meaningful-to-humans names that can be easily guessed, memorized, or if needed searched via the command-line tools. Then a single command can use that name to perform the entire download and installation of the software. This is a much faster world, and one brought a lot closer to reality on Windows by `chocolatey`, for software in general, and also by `psget`, for PowerShell modules that can enhance your shell experience.
 * **Get used to using `man` for help on PowerShell`**. The `man`(ual) command on Unix predates the ability to perform Internet searches for help using commands. However, the facility continues to be very useful as a fast and predictable way to get help. PowerShell's `man` command (actually an alias for `get-help`) provides just as much utility as the Unix `man`, with a common structure for help (including examples). If your question is really about how to use a command, use `man` first before you search the Internet. The command can also provide general topic help with the "about" topics, e.g. `man about_operators`. And its `-online` parameter even supports updating the help, bringing `man` into the present with Internet support.
 * **Use a real editor, not `notepad.exe`**. It's not clear why `notepad.exe`, a very commonly used tool, has seen almost no improvement in functionality since it was originally introduced in Windows 1.0 in 1985. As the default text editing application for its operating system. `notepad.exe` is quite deficient compared to its counterpart in Unix, `vi`. While `vi` is relatively spare in terms of user experience, it operates capably on almost any text format, and can scale to very advanced usage with practice. Notepad fails simply when editing files that don't use the regrettable *CRLF* line endings -- an entire file of multiple lines will be rendered on one line! Also, even familiarity with Notepad's limited keyboard shortcuts is still a cumbersome and awkward editing experience. "Real" editors can handle multiple file formats, allow for fast editing of multiple files, and can provide affordances such as syntax highlighting and language awareness for a variety of languages and not just those used on a particular platform.
-* **Skip the GUI tools, use PowerShell for all.** If you've used Windows for more than a few years, the most natural way to accomplish a task is usually to launch a GUI application. That's because the body of knowledge around Windows is dominated by the time before PowerShell was capable of handling such tasks (or even existed). While it may go against your experience, you need to **force** yourself to perform tasks such as browsing the Windows Event Log, viewing current processes, or installing software from the command line. Ultimately, you'll save yourself time simply from the faster interaction at the command line vs. finding and launching guis and switching context, and you'll end up automating common tasks. It will also force you to learn PowerShell and make you even faster. Think of it this way -- if you were using Unix, you'dhave no choice but to use the CLI. PowerShell is sufficiently broad that there's no reason other than habit that you can't do the same on Windows.
+* **Skip the GUI tools, use PowerShell for all.** If you've used Windows for more than a few years, the most natural way to accomplish a task is usually to launch a GUI application. That's because the body of knowledge around Windows is dominated by the time before PowerShell was capable of handling such tasks (or even existed). While it may go against your experience, you need to **force** yourself to perform tasks such as browsing the Windows Event Log, viewing current processes, or installing software from the command line. Ultimately, you'll save yourself time simply from the faster interaction at the command line vs. finding and launching guis and switching context, and you'll end up automating common tasks. It will also force you to learn PowerShell and make you even faster. Think of it this way -- if you were using Unix, you'd have no choice but to use the CLI. PowerShell is sufficiently broad that there's no reason other than habit that you can't do the same on Windows.
 
 
 License and Authors
