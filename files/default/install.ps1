@@ -35,7 +35,7 @@ function install-gitrepo($repo, $parent, $version = 'master')
     $project = $repo -split '/' | select-object -last 1
     $dest = $parent, $project -join '\'
 
-    echo "Installing $repo to $dest"
+    write-host "Installing $repo to $dest"
 
     $zip = "$dest.zip"
 
@@ -54,13 +54,13 @@ function install-gitrepo($repo, $parent, $version = 'master')
 
 function install-chefdk($destination, $version)
 {
-    $dest = install-gitrepo https://github.com/chef/pantry-chef-repo $version $destination
+    $dest = install-gitrepo https://github.com/chef/pantry-chef-repo $destination $version
     iex "$dest\bin\pantry.ps1 -runchef"
 }
 
 function install-devtools($destination, $version)
 {
-    $winbox = install-gitrepo https://github.com/adamedx/winbox $version $destination
+    $winbox = install-gitrepo https://github.com/adamedx/winbox $destination $version
 
     cd $winbox
     rm .\berksfile.lock -erroraction ignore
@@ -73,7 +73,8 @@ function install-workstation($destination = $null, $winboxversion = 'master')
 {
     $erroractionpreference = 'stop'
 
-    install-chefdk $destination
-    install-devtools $destination, $winboxversion
+    install-chefdk $destination 'master'
+    install-devtools $destination $winboxversion
 }
+
 
