@@ -188,12 +188,12 @@ Efficient, sophisticated users of Windows follow these rules:
 
 * **Always use PowerShell.** Never use `cmd.exe`, and no *cygwin* except for fun.
 * **Use PowerShell cmdlets for everything** instead of GUI tools (e.g. `get-eventlog` instead of *EventViewer*)
+* **Use the `man` alias** in PowerShell to get detailed help on commands.
 * **Use `ConEmu` as your PowerShell terminal.**
-* **Use `psreadline`**
+* **Use [`psreadline`](https://github.com/lzybkr/PSReadLine#usage)** for `bash`-like key-bindings, history search
 * **Use a real editor, not `notepad.exe`.** Emacs, VI(m), Atom, Visual Studio are real editors.
 * **Use `chocolatey`** as your package manager to obtain software.
 * **Use `psget`** to obtain PowerShell modules.
-* **Use the `man` alias** to get detailed help on commands.
 
 See subsequent sections for details on why this advice matters.
 
