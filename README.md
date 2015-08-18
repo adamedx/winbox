@@ -4,7 +4,7 @@ The *Winbox* cookbook configures Windows workstations for developers. It configu
 
 ## Installation
 
-Copy the following command and paste it into PowerShell session and run it to install *Winbox* and all its prerequisites:
+Copy the following command and paste it into a PowerShell session and run it to install *Winbox* and all its prerequisites:
 
 ```powershell
 . { iwr https://raw.githubusercontent.com/adamedx/winbox/0.1.77/files/default/install.ps1 } | iex;install-workstation
