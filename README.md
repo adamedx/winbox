@@ -26,7 +26,7 @@ The *Winbox* cookbook configures the following features on a system:
 
 ### Who should use this cookbook?
 
-Everyone should using Windows should use *Winbox*! It's for developers and operators regardless of platform background:
+Everyone using Windows should use *Winbox*! It's for developers and operators regardless of platform background:
 
 * **Windows users:** You live and breathe Windows. If you're a
   developer, that means a lot of C# / .NET, some C,
