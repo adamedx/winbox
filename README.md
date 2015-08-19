@@ -1,13 +1,13 @@
 Winbox Cookbook
 ===============
-The *Winbox* cookbook configures Windows workstations for developers. It configures Git, Chef-DK, a text editor, and other tools so you can start using it for Chef, Ruby, and other development tasks.
+The *Winbox* cookbook configures Windows workstations for developers. It configures Git, ChefDK, a text editor, and other tools so you can start using it for Chef, Ruby, and other development tasks.
 
 ## Installation
 
 Copy the following command and paste it into a PowerShell session and run it to install *Winbox* and all its prerequisites:
 
 ```powershell
-. { iwr https://raw.githubusercontent.com/adamedx/winbox/0.1.77/files/default/install.ps1 } | iex;install-workstation
+. { iwr https://raw.githubusercontent.com/adamedx/winbox/0.1.78/files/default/install.ps1 } | iex;install-workstation
 ```
 
 See additonal instructions for customization and advanced usage and non-default features.
@@ -50,7 +50,7 @@ not managing the node via a Chef Server), you must have the following
 prerequisites installed:
 
 * `chef-client` and `berkshelf`: to install these, just install the
-  [Chef-DK](https://downloads.chef.io/chef-dk), which includes them.
+  [ChefDK](https://downloads.chef.io/chef-dk), which includes them.
 * `git` (recommended): The best way to obtain this cookbook is by
   cloning it from its source on *Github*. You can install `git` for Windows by visiting
   [Github](http://msysgit.github.io/) in case you don't already have a
@@ -257,7 +257,7 @@ set to a valid value if its overridden:
 |----------------|-------------------------------------------------------|
 | `:vscode`      | **Default**. Sets the editor to *Visual Studio Code*. |
 | `:atom`        | Sets the editor to the Atom editor.                   |
-| `:emacs`       | Sets the editor to the Emacs.                         |
+| `:emacs`       | Sets the editor to Emacs.                             |
 | `:vim`         | Sets the editor to Vim                                |
 
 #### `debugger_install_path` attribute
@@ -270,10 +270,6 @@ the debuggers should be installed.
 * Add unit tests
 * Integration tests
 * Change this cookbook to a resource-only cookbook
-* Expand motivation section with topics such as
-  * The sad state of the modern Windows developer
-  * A comparison with Linux, Windows, and Windows + Winbox
-  * Prescriptive guidance -- how Windows users should use Windows with Winbox
 
 ## Motivation for Winbox
 
@@ -323,7 +319,7 @@ world that contains far more Linux and open-source-influenced tooling
 and assumptions than the late 20th and very early 21st centuries.
 
 ## Bonus - How to Windows, extended version
-The default tools in Windows are not only insufficient for developer productivity, but they actual encourage poorhabits such as resorting to graphical tools rather than automatable command-line tools.
+The default tools in Windows are not only insufficient for developer productivity, but they actually encourage poor habits such as resorting to graphical tools rather than automatable command-line tools.
 
 Fortunately, modern versions of Windows along with the features installed by this cookbook allow developers to be effective -- just follow the rules below:
 

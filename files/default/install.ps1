@@ -56,7 +56,7 @@ function install-chefdk($destination, $version)
 {
     write-host 'Configuring ChefDK and other tools...'
     $dest = install-gitrepo https://github.com/chef/pantry-chef-repo $destination $version
-    iex "$dest\bin\pantry.ps1 -runchef"
+    iex "& '$dest\bin\pantry.ps1' -runchef"
 }
 
 function install-devtools($destination, $version)
@@ -81,11 +81,10 @@ function install-workstation($destination = $null, $winboxversion = 'master')
     install-chefdk $destination 'master'
     install-devtools $destination $winboxversion
 
-    write-host "`nOhai! Configuration has completed successfully.`n" -foregroundcolor green
-    write-host "Click the ChefDK icon on your Start menu to open a"
-    write-host "ChefDK-enhanced PowerShell shell session, or start a"
-    write-host "new PowerShell session from Explorer and then run the"
-    write-host "the command:`n"
+    write-host "`nConfiguration has completed successfully.`n" -foregroundcolor green
+    write-host "Ohai! Click the ChefDK icon on your Start menu to open"
+    write-host "a ChefDK-enhanced PowerShell session, or start a new"
+    write-host "PowerShell session from Explorer and then run the command:`n"
     write-host "`tchef shell-init powershell | iex`n" -foregroundcolor cyan
     write-host "to get started with Chef.`n"
 }
