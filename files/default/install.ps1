@@ -65,7 +65,7 @@ function install-devtools($destination, $version)
 
     $winbox = install-gitrepo https://github.com/adamedx/winbox $destination $version
 
-    cd $winbox
+    iex "& cd $winbox"
     rm .\berksfile.lock -erroraction ignore
     berks vendor cookbooks
     & chef-client --color -z -o winbox
