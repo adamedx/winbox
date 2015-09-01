@@ -25,9 +25,23 @@ Set-PSReadlineOption -EditMode Emacs
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [Security.Principal.WindowsPrincipal] $identity
 $titleprefix = ""
-if (test-path variable:/PSDebugContext) { $titleprefix = 'Debug: ' }
-elseif($principal.IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
-{ $titleprefix = "Administrator: " }
+if (test-path variable:/PSDebugContext) {
+  $titleprefix = 'Debug: '
+}
+else
+{
+  if ($principal.IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+  {
+    $titleprefix = "Administrator: "
+    Write-Host -foregroundcolor green "Running as Administrator`n "
+  }
+  else
+  {
+    Write-Warning "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    Write-Warning "!You are NOT running as Administrator!"
+    Write-Warning "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`n "
+  }
+}
 
 #
 # The title will look like one of the following:
