@@ -8,7 +8,7 @@
 			<value name="KeyboardHooks" type="hex" data="01"/>
 			<value name="StartType" type="hex" data="00"/>
 			<value name="StartTasksFile" type="string" data=""/>
-			<value name="StartTasksName" type="string" data=""/>
+			<value name="StartTasksName" type="string" data="{Shells::PowerShell (Admin)}"/>
 			<value name="Min2Tray" type="hex" data="00"/>
 			<value name="Update.CheckOnStartup" type="hex" data="01"/>
 			<value name="Update.CheckHourly" type="hex" data="00"/>
