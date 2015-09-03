@@ -55,10 +55,7 @@ if ($PROFILE -eq $null -or $PROFILE.length -le 3)
   exit 0
 }
 
-$profiledestination = "$PROFILE" -split '\\\\'
-$destination = $profiledestination[0..($profiledestination.length - 2)] -join '\\'
-$destination = $destination + '\\modules\\psreadline\\psreadline.psm1'
-test-path $destination
+get-module -list psreadline
 EOH
 end
 
