@@ -42,9 +42,7 @@ ruby_block 'check_conemu_config' do
   notifies :create, "cookbook_file[#{conemu_config_file}]", :immediately
 end
 
-
 # chocolatey 'psget'
-
 powershell_script 'psget' do
   code 'chocolatey install psget -y'
   only_if <<-EOH
@@ -57,3 +55,17 @@ if ( $env:username -eq 'system' -or $env:username.endswith('$'))
 EOH
 end
 
+# install posh-git
+powershell_script 'posh-git' do
+  code <<-EOH
+Install-Module posh-git
+# Remove the un-needed example posh-git profile include
+if ( test-path $PROFILE )
+{
+(Get-Content $PROFILE) -notmatch "posh-git" | out-file $PROFILE
+}
+EOH
+  only_if <<-EOH
+(get-module -listavailable posh-git) -eq $null
+EOH
+end

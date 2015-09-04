@@ -20,6 +20,9 @@
 import-module psreadline
 Set-PSReadlineOption -EditMode Emacs
 
+# Enable posh-git support
+import-module posh-git
+
 # Get the username and whether we're elevated for display
 # in the title and prompt
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
@@ -74,8 +77,9 @@ function prompt
     write-host -nonewline -foregroundcolor darkyellow "$env:computername "
     write-host -nonewline -foregroundcolor gray "("
     write-host -nonewline -foregroundcolor $exitcolor "0x$(($lastexit).ToString("X8"))"
-    write-host -nonewline -foregroundcolor gray ") "
-    write-host -foregroundcolor cyan "$($executionContext.SessionState.Path.CurrentLocation)"
+    write-host -nonewline -foregroundcolor gray ")"
+    Write-VcsStatus
+    write-host -foregroundcolor cyan " $($executionContext.SessionState.Path.CurrentLocation)"
     write-host -nonewline -foregroundcolor darkyellow "$env:username"
     "$('>' * ($nestedPromptLevel + 1)) "
 }
@@ -87,4 +91,3 @@ set-alias -option allscope man get-help-full
 # Useful shortcut to get to Documents folder
 . ~\set-location-docs.ps1
 new-alias docs set-location-docs
-
