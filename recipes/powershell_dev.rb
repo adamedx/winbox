@@ -16,7 +16,7 @@
 # limitations under the License.
 
 powershell_script 'ExecutionPolicyUnrestricted' do
-  architecture :x86_64
+  architecture ENV["PROCESSOR_ARCHITECTURE"] == "x86" ? :i386 : :x86_64
   code <<-EOH
 powershell -noprofile -executionpolicy bypass -command {set-executionpolicy unrestricted -force -scope localmachine}
 exit 0
