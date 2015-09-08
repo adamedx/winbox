@@ -58,7 +58,12 @@ end
 # install posh-git
 powershell_script 'posh-git' do
   code <<-EOH
-Install-Module posh-git
+# Bootstrap provider
+Get-PackageProvider -Name NuGet -ForceBootstrap
+
+# Install post-git
+Install-Module posh-git -confirm:$false -force
+
 # Remove the un-needed example posh-git profile include
 if ( test-path $PROFILE )
 {
