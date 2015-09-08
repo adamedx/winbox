@@ -57,11 +57,15 @@ if ($PROFILE -eq $null -or $PROFILE.length -le 3)
   exit 0
 }
 
+if ([System.Environment]::OSVersion.Version.Major -ge 10) -and ((get-module psreadline -listavailable) -ne $null)
+{
+  exit 0
+}
+
 $profiledestination = "$PROFILE" -split '\\\\'
 $destination = $profiledestination[0..($profiledestination.length - 2)] -join '\\'
 $destination = $destination + '\\modules\\psreadline\\psreadline.psm1'
 test-path $destination
 EOH
-  not_if ([System.Environment]::OSVersion.Version.Major -ge 10) -and ((get-module psreadline -listavailable) -ne $null)'
 end
 
