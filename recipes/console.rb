@@ -66,6 +66,6 @@ if ( test-path $PROFILE )
 }
 EOH
   only_if <<-EOH
-(get-module -listavailable posh-git) -eq $null
+(get-module -listavailable posh-git) -eq $null -and ($PSVersionTable.PSVersion.Major -ge 5)
 EOH
 end
