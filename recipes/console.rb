@@ -46,7 +46,7 @@ end
 powershell_script 'psget' do
   code 'chocolatey install psget -y'
   only_if <<-EOH
-if ( $env:username -eq 'system' -or $env:username.endswith('$'))
+if ( ($env:username -eq 'system') -or $env:username.endswith('$') -or ($PSVersionTable.PSVersion.Major -lt 5) )
 {
   exit 1
 }
@@ -72,5 +72,6 @@ if ( test-path $PROFILE )
 EOH
   only_if <<-EOH
 (get-module -listavailable posh-git) -eq $null -and ($PSVersionTable.PSVersion.Major -ge 5)
+
 EOH
 end
