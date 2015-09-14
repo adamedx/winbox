@@ -37,7 +37,7 @@ if node[:platform] == "windows"
     # Skip install if we're local system since vscode
     # setup seems to hang in that context
     powershell_script 'install vscode' do
-      code "& '#{download_path}' --silent"
+      code "& '#{download_path}' /verysilent /suppressmsgboxes /norestart"
       only_if <<-EOH
 if ( $env:username -eq 'system' -or $env:username.endswith('$'))
 {

@@ -21,7 +21,10 @@ import-module psreadline
 Set-PSReadlineOption -EditMode Emacs
 
 # Enable posh-git support
-import-module posh-git
+if ((get-module -listavailable 'posh-git') -ne $null)
+{
+    import-module posh-git
+}
 
 # Get the username and whether we're elevated for display
 # in the title and prompt
