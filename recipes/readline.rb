@@ -57,7 +57,7 @@ if ($PROFILE -eq $null -or $PROFILE.length -le 3)
   exit 0
 }
 
-if ([System.Environment]::OSVersion.Version.Major -ge 10) -and ((get-module psreadline -listavailable) -ne $null)
+if (([System.Environment]::OSVersion.Version.Major -ge 10) -and ((get-module psreadline -listavailable) -ne $null))
 {
   exit 0
 }
