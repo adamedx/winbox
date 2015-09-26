@@ -31,22 +31,22 @@ if ((get-module -listavailable 'posh-git') -ne $null)
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
 $principal = [Security.Principal.WindowsPrincipal] $identity
 $titleprefix = ""
-if (test-path variable:/PSDebugContext) {
-  $titleprefix = 'Debug: '
+if (test-path variable:/PSDebugContext)
+{
+    $titleprefix = 'Debug: '
 }
 else
 {
-  if ($principal.IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
-  {
-    $titleprefix = "Administrator: "
-    Write-Host -foregroundcolor green "Running as Administrator`n "
-  }
-  else
-  {
-    Write-Warning "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    Write-Warning "!You are NOT running as Administrator!"
-    Write-Warning "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`n "
-  }
+    if ($principal.IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+    {
+        $titleprefix = "Administrator: "
+    }
+    else
+    {
+        Write-Warning "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        Write-Warning "!You are NOT running as Administrator!"
+        Write-Warning "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`n "
+    }
 }
 
 #
@@ -81,7 +81,7 @@ function prompt
     write-host -nonewline -foregroundcolor gray "("
     write-host -nonewline -foregroundcolor $exitcolor "0x$(($lastexit).ToString("X8"))"
     write-host -nonewline -foregroundcolor gray ")"
-    Write-VcsStatus
+    if ( get-command write-vcsstatus) { Write-VcsStatus }
     write-host -foregroundcolor cyan " $($executionContext.SessionState.Path.CurrentLocation)"
     write-host -nonewline -foregroundcolor darkyellow "$env:username"
     "$('>' * ($nestedPromptLevel + 1)) "
