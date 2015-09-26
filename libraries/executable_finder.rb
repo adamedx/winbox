@@ -14,9 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require 'chef/mixin/shell_out'
+
 class ExecutableFinder
+
+  include Chef::Mixin::ShellOut
+
   def self.FindExecutableDirectory(executable)
-    executable_path = (`powershell -nologo -noninteractive -noprofile -command "($result = get-command #{executable}) *>&1 | out-null ; if ($?) { $result.path } else { '' }"`).chomp
+    self.new.FindExecutableDirectory(executable)
+  end
+
+  def FindExecutableDirectory(executable)
+    executable_path = shell_out("powershell -nologo -noninteractive -noprofile -command \"($result = get-command #{executable}) *>&1 | out-null ; if ($?) { $result.path } else { '' }\"").stdout.chomp
 
     result = nil
 
@@ -26,4 +35,10 @@ class ExecutableFinder
 
     result
   end
+
+  private
+
+  def initialize
+  end
+
 end

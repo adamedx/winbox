@@ -19,7 +19,7 @@ include_recipe 'winbox::chocolatey_install'
 
 editor_executable = nil
 
-if node[:platform] == "windows"
+if node['platform'] == "windows"
   case node['winbox']['editor']
   when :vscode
     editor_executable = 'powershell.exe -noprofile -command start-process code -wait -argumentlist @args'

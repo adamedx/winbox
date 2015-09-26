@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if node[:platform] == "windows"
+if node['platform'] == "windows"
   include_recipe 'git'
   include_recipe 'winbox::chocolatey_install'
   include_recipe 'winbox::powershell_dev'
