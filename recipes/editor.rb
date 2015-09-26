@@ -34,21 +34,20 @@ if node[:platform] == "windows"
       source 'https://az764295.vo.msecnd.net/public/0.8.0/VSCodeSetup.exe'
     end
 
-    # Skip install if we're local system since vscode
-    # setup seems to hang in that context
     powershell_script 'install vscode' do
       code "& '#{download_path}' /verysilent /suppressmsgboxes /norestart"
-      only_if <<-EOH
-if ( $env:username -eq 'system' -or $env:username.endswith('$'))
-{
-  exit 1
-}
-if ( test-path '#{ENV['LOCALAPPDATA']}/Code/update.exe' )
-{
-  exit 1
-}
-EOH
+      not_if {
+        vscode_evidence_value = { :name => 'URLInfoAbout', :data => 'https://code.visualstudio.com/' }
+        applications_key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall'
+        registry_get_subkeys(applications_key, :i386).find do | application |
+          registry_get_values([applications_key, application].join('\\'), :i386).find do | value |
+            value[:name].downcase == vscode_evidence_value[:name].downcase &&
+              value[:data].downcase == vscode_evidence_value[:data].downcase
+          end
+        end
+      }
     end
+
   when :emacs
     editor_executable = 'emacs.exe'
     powershell_script 'install_emacs_default' do

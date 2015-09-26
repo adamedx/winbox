@@ -22,7 +22,6 @@ if node[:platform] == "windows"
   include_recipe 'winbox::readline'
   include_recipe 'winbox::editor'
   include_recipe 'winbox::console'
-  include_recipe 'winbox::chefdk_shortcut'
 end
 
 # Fix terminal variable to avoid warnings
