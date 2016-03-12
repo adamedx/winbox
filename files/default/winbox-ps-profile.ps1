@@ -14,9 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
 # Enable readline support
-#
 import-module psreadline
 Set-PSReadlineOption -EditMode Emacs
 
@@ -40,12 +38,6 @@ else
     if ($principal.IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
     {
         $titleprefix = "Administrator: "
-    }
-    else
-    {
-        Write-Warning "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        Write-Warning "!You are NOT running as Administrator!"
-        Write-Warning "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`n "
     }
 }
 
