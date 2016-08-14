@@ -58,7 +58,7 @@ end
 # because the file resource can't handle remote profile
 # paths (i.e. UNC paths) as a destination
 powershell_script profile do
-  code "'. ~/winbox-ps-profile.ps1' > '#{profile}'"
-  not_if "test-path '#{profile}'"
+  code "'. ~/winbox-ps-profile.ps1' >> '#{profile}'"
+  not_if "if ((test-path '#{profile}') -and ((cat '#{profile}' | Select-String winbox) -ne $null)) { $true } else { $false }"
 end
 
