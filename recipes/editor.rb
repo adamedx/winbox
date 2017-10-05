@@ -32,7 +32,7 @@ if node['platform'] == "windows"
     end
 
     remote_file download_path do
-      source 'https://az764295.vo.msecnd.net/public/0.8.0/VSCodeSetup.exe'
+      source 'https://vscode-update.azurewebsites.net/latest/win32-x64/stable'
     end
 
     powershell_script 'install vscode' do
