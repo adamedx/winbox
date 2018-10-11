@@ -41,7 +41,17 @@ function install-gitrepo($repo, $parent, $version = 'master')
 
     ($zip,$dest) | rm -erroraction ignore -r -force
 
-    iwr "$repo/archive/$version.zip" -outfile $zip
+    # Strangely, even the latest PowerShell in 2018 does not use TLS 1.2 by default.
+    #  Many sites, including Github, are no longer supporting older protocols. To ensure
+    # the request below can successfully negotiate secure transport, we need to use this
+    # obscure approach to require TLS 1.2. This may not work on PowerShell Core, so we
+    # catch the exception. The setting below is a flags field, so we can OR in the TLS 1.2 value.
+    try {
+        [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+    } catch {
+        write-warning "Unable to configure TLS 1.2 use by PowerShell, subsequent web requests from cmdlets may fail."
+    }
+    iwr -usebasicparsing "$repo/archive/$version.zip" -outfile $zip
 
     $shell = get-shell
 
