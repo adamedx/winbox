@@ -61,7 +61,10 @@ else
 function prompt
 {
     $lasterror = $?
-    $lastexit = $lastexitcode
+    $lastexit = try {
+        $lastexitcode
+    } catch {
+    }
     if ($lastexit -eq $null) { $lastexit = 0 }
     $errorcolor = 'green'
     $exitcolor = 'green'
